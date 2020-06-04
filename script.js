@@ -49,7 +49,7 @@ function resetSettings() {
   let tag = document.createElement("p");
   let text = document.createTextNode("Player " + playerRange);
   let input = document.createElement("input");
-  let label = document.createElement("lavel");
+  let label = document.createElement("label");
   input.setAttribute("type", "text");
   input.setAttribute("id", "player" + playerRange);
   input.addEventListener("input", setPlayerName);
