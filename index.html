@@ -11,7 +11,7 @@
   <body>
     <div>
       <h1>Memory</h1>
-      <div class="configuration">
+      <div class="configuration" id="configuration">
         <div class="columnContainer">
           <p>Select Memory Pair Size:</p>
           <div class="simpleContainer">
@@ -32,13 +32,18 @@
           <div>
             <p>Player 1</p>
             <label>Name: </label>
-            <input type="text" id="playerName" oninput="setPlayerName(event)" />
+            <input type="text" id="player1" oninput="setPlayerName(event)" />
           </div>
         </div>
 
         <div class="rowContainer">
           <button onclick="resetSettings()">Reset</button>
-          <button>Start Game!</button>
+          <button onclick="startGame()">Start Game!</button>
+        </div>
+      </div>
+      <div class="game" id="game">
+        <div class="columnContainer">
+          <div class="playerNames rowContainer" id="playerNames"></div>
         </div>
       </div>
     </div>

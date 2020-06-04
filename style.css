@@ -16,6 +16,7 @@ body {
   margin: 20px;
   padding: 10px;
   max-width: 290px;
+  /*delete this to function properly*/
 }
 
 button,
@@ -68,4 +69,18 @@ h1 {
 .playerNames {
   display: flex;
   justify-content: space-between;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  background-color: white;
+  border-radius: 15px;
+  margin: 20px;
+  padding: 10px;
+  max-width: 290px;
+  /*delete this to function properly*/
 }

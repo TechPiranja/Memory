@@ -1,5 +1,6 @@
 var playerRange = 1;
 var pairRange = 5;
+var players = {};
 
 function setPairRange() {
   pairRange = document.getElementById("pairRange").value;
@@ -34,6 +35,12 @@ function setPlayerRange() {
 
 function setPlayerName(e) {
   console.log(e.target.value);
+}
+
+function startGame() {
+  for (let i = 0; i < playerRange; i++) players[i] = document.getElementById("player" + (i + 1)).value;
+  let x = document.getElementById("configuration");
+  x.style.display = "none";
 }
 
 function resetSettings() {
