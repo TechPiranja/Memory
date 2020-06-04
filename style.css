@@ -81,6 +81,29 @@ h1 {
   border-radius: 15px;
   margin: 20px;
   padding: 10px;
-  max-width: 290px;
   /*delete this to function properly*/
+}
+
+.player {
+  border-radius: 15px;
+  text-align: center;
+  margin: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#player1 {
+  background-color: #b3e5fc;
+}
+
+#player2 {
+  background-color: #b39ddb;
+}
+
+#player3 {
+  background-color: #ffecb3;
+}
+
+#player4 {
+  background-color: #b2dfdb;
 }

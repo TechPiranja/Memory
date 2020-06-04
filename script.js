@@ -39,8 +39,22 @@ function setPlayerName(e) {
 
 function startGame() {
   for (let i = 0; i < playerRange; i++) players[i] = document.getElementById("player" + (i + 1)).value;
+  for (let i = 1; i <= playerRange; i++) addPlayers(i);
+
   let x = document.getElementById("configuration");
   x.style.display = "none";
+}
+
+function addPlayers(playerId) {
+  let playerAvatars = document.getElementById("playerAvatars");
+  let div = document.createElement("div");
+  let tag = document.createElement("p");
+  let text = document.createTextNode("P" + playerId + ": " + players[playerId - 1]);
+  tag.appendChild(text);
+  div.appendChild(tag);
+  div.classList.add("player");
+  div.setAttribute("id", "player" + playerId);
+  playerAvatars.appendChild(div);
 }
 
 function resetSettings() {
