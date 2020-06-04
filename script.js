@@ -33,6 +33,7 @@ function setPlayerRange() {
   }
 }
 
+// currently not used
 function setPlayerName(e) {
   console.log(e.target.value);
 }
@@ -43,6 +44,19 @@ function startGame() {
 
   let x = document.getElementById("configuration");
   x.style.display = "none";
+
+  let pairSize = document.getElementById("outputPairSize").innerHTML;
+  createBoard(pairSize);
+}
+
+function createBoard(pairSize) {
+  let board = document.getElementById("board");
+  for (let i = 0; i < pairSize * 2; i++) {
+    let div = document.createElement("div");
+    div.classList.add("card");
+    //div.setAttribute("id", "player" + playerId);
+    board.appendChild(div);
+  }
 }
 
 function addPlayers(playerId) {

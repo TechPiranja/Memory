@@ -74,9 +74,6 @@ h1 {
 .game {
   display: flex;
   flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  justify-items: center;
   background-color: white;
   border-radius: 15px;
   margin: 20px;
@@ -106,4 +103,12 @@ h1 {
 
 #player4 {
   background-color: #b2dfdb;
+}
+
+.card {
+  background-color: #9fa8da;
+  width: 100px;
+  height: 120px;
+  border-radius: 15px;
+  margin: 5px;
 }
