@@ -14,7 +14,8 @@ body {
 }
 
 button,
-p {
+p,
+label {
   font-size: 15pt;
 }
 

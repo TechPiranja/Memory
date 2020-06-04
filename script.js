@@ -16,12 +16,15 @@ function setPlayerRange() {
     let div = document.createElement("div");
     let tag = document.createElement("p");
     let text = document.createTextNode("Player " + playerRange);
-    let input = document.createElement("INPUT");
+    let input = document.createElement("input");
+    let label = document.createElement("lavel");
     input.setAttribute("type", "text");
     input.setAttribute("id", "player" + playerRange);
     input.addEventListener("input", setPlayerName);
+    label.innerHTML = "Name: ";
     tag.appendChild(text);
     div.appendChild(tag);
+    div.appendChild(label);
     div.appendChild(input);
     playerNameDiv.appendChild(div);
   } else if (temp > playerRange) {
