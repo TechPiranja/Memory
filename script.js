@@ -13,11 +13,22 @@ function setPlayerRange() {
   let playerNameDiv = document.getElementById("playerNames");
 
   if (temp < playerRange) {
-    var tag = document.createElement("p");
-    var text = document.createTextNode("Player " + playerRange + ": placeholder");
+    let div = document.createElement("div");
+    let tag = document.createElement("p");
+    let text = document.createTextNode("Player " + playerRange);
+    let input = document.createElement("INPUT");
+    input.setAttribute("type", "text");
+    input.setAttribute("id", "player" + playerRange);
+    input.addEventListener("input", setPlayerName);
     tag.appendChild(text);
-    playerNameDiv.appendChild(tag);
+    div.appendChild(tag);
+    div.appendChild(input);
+    playerNameDiv.appendChild(div);
   } else if (temp > playerRange) {
     playerNameDiv.removeChild(playerNameDiv.lastChild);
   }
+}
+
+function setPlayerName(e) {
+  console.log(e.target.value);
 }
