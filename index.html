@@ -10,19 +10,17 @@
   <body>
     <div>
       <h1>Memory</h1>
+      <div class="container">
+        <p>Select Memory Pair Size:</p>
+        <p id="outputPairSize">5</p>
+      </div>
 
-      <p>Select Memory Pair Size:</p>
-      <p id="output"></p>
-      <input
-        type="range"
-        min="5"
-        max="25"
-        value="5"
-        class="slider"
-        id="pairRange"
-        oninput="setPairRange()"
-      />
-      <p>Select Players: 0</p>
+      <input type="range" min="5" max="25" value="5" class="slider" id="pairRange" oninput="setPairRange()" />
+      <div class="container">
+        <p>Select Players:</p>
+        <p id="outputPlayerSize">1</p>
+      </div>
+      <input type="range" min="1" max="4" value="1" class="slider" id="playerRange" oninput="setPlayerRange()" />
       <p>Player Name: test</p>
     </div>
     <div>

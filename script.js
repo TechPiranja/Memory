@@ -1,5 +1,9 @@
 function setPairRange() {
-  var val = document.getElementById("pairRange").value; //gets the oninput value
-  document.getElementById("output").innerHTML = val; //displays this value to the html page
-  console.log(val);
+  var val = document.getElementById("pairRange").value;
+  document.getElementById("outputPairSize").innerHTML = val;
+}
+
+function setPlayerRange() {
+  var val = document.getElementById("playerRange").value;
+  document.getElementById("outputPlayerSize").innerHTML = val;
 }

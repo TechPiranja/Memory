@@ -13,3 +13,7 @@ button {
   border-color: #1976d2;
   color: white;
 }
+
+.container {
+  display: flex;
+}
