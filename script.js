@@ -10,17 +10,14 @@ function setPlayerRange() {
   let temp = playerRange;
   playerRange = document.getElementById("playerRange").value;
   document.getElementById("outputPlayerSize").innerHTML = playerRange;
-
   let playerNameDiv = document.getElementById("playerNames");
+
   if (temp < playerRange) {
     var tag = document.createElement("p");
-    var text = document.createTextNode("Player " + playerRange);
+    var text = document.createTextNode("Player " + playerRange + ": placeholder");
     tag.appendChild(text);
     playerNameDiv.appendChild(tag);
+  } else if (temp > playerRange) {
+    playerNameDiv.removeChild(playerNameDiv.lastChild);
   }
-  // add text
-  else if (temp > playerRange) {
-    playerNameDiv.removeChild(playerNameDiv.lastChild); // will remove the element from DOM
-  }
-  // remove text
 }

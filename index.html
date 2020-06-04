@@ -12,26 +12,27 @@
     <h1>Memory</h1>
     <div class="configuration">
       <div class="container">
+        <p>Select Memory Pair Size:</p>
         <div class="rowContainer">
-          <p>Select Memory Pair Size:</p>
           <p id="outputPairSize">5</p>
+          <input type="range" min="5" max="25" value="5" class="slider" id="pairRange" oninput="setPairRange()" />
         </div>
-
-        <input type="range" min="5" max="25" value="5" class="slider" id="pairRange" oninput="setPairRange()" />
       </div>
 
       <div class="container">
+        <p>Select Players:</p>
         <div class="rowContainer">
-          <p>Select Players:</p>
           <p id="outputPlayerSize">1</p>
+          <input type="range" min="1" max="4" value="1" class="slider" id="playerRange" oninput="setPlayerRange()" />
         </div>
-
-        <input type="range" min="1" max="4" value="1" class="slider" id="playerRange" oninput="setPlayerRange()" />
       </div>
 
-      <div class="playerNames container" id="playerNames"><p>Player 1</p></div>
+      <div class="playerNames container" id="playerNames"><p>Player 1: placeholder</p></div>
 
-      <button>Start Game!</button>
+      <div class="container">
+        <button>Reset</button>
+        <button>Start Game!</button>
+      </div>
     </div>
   </body>
 </html>

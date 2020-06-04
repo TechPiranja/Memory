@@ -1,6 +1,6 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: lightblue;
+  background-color: #64b5f6;
 }
 
 .configuration {
@@ -9,6 +9,8 @@ body {
   justify-content: center;
   background-color: white;
   border-radius: 15px;
+  margin: 50px;
+  padding: 10px;
 }
 
 button,
@@ -21,15 +23,27 @@ button {
   border-radius: 5px;
   border-color: #1976d2;
   color: white;
-  margin: 10px;
   width: 20%;
 }
 
 .container {
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px;
   padding: 15px;
 }
 
 .rowContainer {
   display: flex;
+}
+
+h1 {
+  text-align: center;
+  color: #0d47a1;
+  margin: 20px;
+}
+
+.slider {
+  margin-left: 20px;
 }
