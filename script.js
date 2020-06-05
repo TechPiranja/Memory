@@ -2,6 +2,51 @@ var playerRange = 1;
 var pairRange = 5;
 var players = {};
 
+var emojis = [
+  "&#9875",
+  "&#9889",
+  "&#9917",
+  "&#9918",
+  "&#9924",
+  "&#9925",
+  "&#9961",
+  "&#9962",
+  "&#9968",
+  "&#9969",
+  "&#9976",
+  "&#11088",
+  "&#127752",
+  "&#127758",
+  "&#127770",
+  "&#127773",
+  "&#127783",
+  "&#127789",
+  "&#127790",
+  "&#127793",
+  "&#127800",
+  "&#127826",
+  "&#127828",
+  "&#127853",
+  "&#127873",
+  "&#127918",
+  "&#128013",
+  "&#128018",
+  "&#128025",
+  "&#128027",
+  "&#128029",
+  "&#128035",
+  "&#129419",
+  "&#128053",
+  "&#128123",
+  "&#128126",
+  "&#128163",
+  "&#128176",
+  "&#128190",
+  "&#128293",
+  "&#128527",
+  "&#129412",
+];
+
 function setPairRange() {
   pairRange = document.getElementById("pairRange").value;
   document.getElementById("outputPairSize").innerHTML = pairRange;
@@ -52,6 +97,12 @@ function startGame() {
   createBoard(pairSize);
 }
 
+var usedEmojis = {};
+
+getRandomEmoji = function () {
+  return emojis[Math.floor(Math.random() * emojis.length)];
+};
+
 function createBoard(pairSize) {
   let board = document.getElementById("board");
   for (let i = 0; i < pairSize * 2; i++) {
@@ -63,11 +114,11 @@ function createBoard(pairSize) {
     backFace.classList.add("back-face");
 
     let tagFront = document.createElement("p");
-    tagFront.innerHTML = "&#127752;";
+    tagFront.innerHTML = getRandomEmoji();
     tagFront.classList.add("emoji");
 
     let tagBack = document.createElement("p");
-    tagBack.innerHTML = "&#129409;";
+    tagBack.innerHTML = "&#8987;";
     tagBack.classList.add("emoji");
 
     frontFace.appendChild(tagFront);
@@ -123,12 +174,14 @@ var flippedCards = {};
 var flippedCounter = 0;
 
 function flipCard() {
-  if (flippedCounter == 2) {
-    flippedCounter = 0;
+  if (flippedCards[0] != this.id && flippedCards[1] != this.id) {
+    if (flippedCounter == 2) {
+      flippedCounter = 0;
+    }
+    this.classList.toggle("flip");
+    flippedCards[flippedCounter] = this.id;
+    flippedCounter++;
   }
-  this.classList.toggle("flip");
-  flippedCards[flippedCounter] = this.id;
-  flippedCounter++;
 }
 
 function checkCards() {
