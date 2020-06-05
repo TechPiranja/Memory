@@ -131,6 +131,7 @@ h1 {
   width: 70vw;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   perspective: 1000px;
 }
 
@@ -142,6 +143,7 @@ h1 {
   transform: scale(1);
   transform-style: preserve-3d;
   transition: transform 0.5s;
+  cursor: pointer;
 }
 
 .front-face {
