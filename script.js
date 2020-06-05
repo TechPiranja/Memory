@@ -203,6 +203,7 @@ function flipCard() {
   if (flippedCards[0] != this.id && flippedCards[1] != this.id) {
     if (flippedCounter == 2) {
       flippedCounter = 0;
+      flippedCards = {};
     }
     this.classList.toggle("flip");
     flippedCards[flippedCounter] = this.id;
@@ -216,9 +217,8 @@ function checkCards() {
     let secondFlipped = document.getElementById(flippedCards[1]);
     let board = document.getElementById("board");
     if (firstFlipped.innerHTML == secondFlipped.innerHTML) {
-      sleep(1);
-      firstFlipped.style.visibility = "hidden";
-      secondFlipped.style.visibility = "hidden";
+      firstFlipped.removeEventListener("click", flipCard);
+      secondFlipped.removeEventListener("click", flipCard);
     } else {
       firstFlipped.classList.toggle("flip");
       secondFlipped.classList.toggle("flip");
