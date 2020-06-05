@@ -42,8 +42,11 @@ function startGame() {
   for (let i = 0; i < playerRange; i++) players[i] = document.getElementById("player" + (i + 1)).value;
   for (let i = 1; i <= playerRange; i++) addPlayers(i);
 
-  let x = document.getElementById("configuration");
-  x.style.display = "none";
+  let configuration = document.getElementById("configuration");
+  configuration.style.display = "none";
+
+  let game = document.getElementById("game");
+  game.style.display = "block";
 
   let pairSize = document.getElementById("outputPairSize").innerHTML;
   createBoard(pairSize);
@@ -114,10 +117,6 @@ function resetSettings() {
   playerNameDiv.appendChild(div);
 }
 
-const cards = document.querySelectorAll(".memory-card");
-
 function flipCard() {
   this.classList.toggle("flip");
 }
-
-cards.forEach((card) => card.addEventListener("click", flipCard));
