@@ -94,13 +94,39 @@ function startGame() {
   game.style.display = "block";
 
   let pairSize = document.getElementById("outputPairSize").innerHTML;
+  fillUsedEmojiList();
   createBoard(pairSize);
 }
 
-var usedEmojis = {};
+var usedEmojis = [];
 
-getRandomEmoji = function () {
-  return emojis[Math.floor(Math.random() * emojis.length)];
+function fillUsedEmojiList() {
+  for (let i = 0; i < pairRange * 2; i += 2) {
+    let emoji = getNewRandomEmoji();
+    usedEmojis[i] = emoji;
+    usedEmojis[i + 1] = emoji;
+  }
+
+  shuffleArr(usedEmojis);
+  console.log(usedEmojis);
+}
+
+function shuffleArr(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * i);
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+}
+
+getNewRandomEmoji = function () {
+  let emoji;
+  do {
+    emoji = emojis[Math.floor(Math.random() * emojis.length)];
+  } while (usedEmojis.includes(emoji));
+
+  return emoji;
 };
 
 function createBoard(pairSize) {
@@ -114,7 +140,7 @@ function createBoard(pairSize) {
     backFace.classList.add("back-face");
 
     let tagFront = document.createElement("p");
-    tagFront.innerHTML = getRandomEmoji();
+    tagFront.innerHTML = usedEmojis[i];
     tagFront.classList.add("emoji");
 
     let tagBack = document.createElement("p");
@@ -185,7 +211,6 @@ function flipCard() {
 }
 
 function checkCards() {
-  console.log("test");
   if (flippedCounter == 2) {
     let firstFlipped = document.getElementById(flippedCards[0]);
     let secondFlipped = document.getElementById(flippedCards[1]);
