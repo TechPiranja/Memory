@@ -53,8 +53,26 @@ function createBoard(pairSize) {
   let board = document.getElementById("board");
   for (let i = 0; i < pairSize * 2; i++) {
     let div = document.createElement("div");
-    div.classList.add("card");
-    //div.setAttribute("id", "player" + playerId);
+    div.classList.add("memory-card");
+    let frontFace = document.createElement("div");
+    let backFace = document.createElement("div");
+    frontFace.classList.add("front-face");
+    backFace.classList.add("back-face");
+
+    let tagFront = document.createElement("p");
+    tagFront.innerHTML = "&#127752;";
+    tagFront.classList.add("emoji");
+
+    let tagBack = document.createElement("p");
+    tagBack.innerHTML = "&#129409;";
+    tagBack.classList.add("emoji");
+
+    frontFace.appendChild(tagFront);
+    backFace.appendChild(tagBack);
+    div.appendChild(frontFace);
+    div.appendChild(backFace);
+    div.addEventListener("click", flipCard);
+
     board.appendChild(div);
   }
 }
@@ -95,3 +113,11 @@ function resetSettings() {
   div.appendChild(input);
   playerNameDiv.appendChild(div);
 }
+
+const cards = document.querySelectorAll(".memory-card");
+
+function flipCard() {
+  this.classList.toggle("flip");
+}
+
+cards.forEach((card) => card.addEventListener("click", flipCard));
