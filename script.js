@@ -74,6 +74,7 @@ function createBoard(pairSize) {
     backFace.appendChild(tagBack);
     div.appendChild(frontFace);
     div.appendChild(backFace);
+    div.setAttribute("id", "card" + i);
     div.addEventListener("click", flipCard);
 
     board.appendChild(div);
@@ -117,6 +118,22 @@ function resetSettings() {
   playerNameDiv.appendChild(div);
 }
 
+var flippedCards = {};
+var flippedCounter = 0;
+
 function flipCard() {
-  this.classList.toggle("flip");
+  if (flippedCounter < 2) {
+    this.classList.toggle("flip");
+    flippedCards[flippedCounter] = this.id;
+    flippedCounter++;
+  } else {
+    let firstFlipped = document.getElementById(flippedCards[0]);
+    firstFlipped.classList.toggle("flip");
+    let secondFlipped = document.getElementById(flippedCards[1]);
+    secondFlipped.classList.toggle("flip");
+    this.classList.toggle("flip");
+    flippedCounter = 0;
+    flippedCards[flippedCounter] = this.id;
+    flippedCounter++;
+  }
 }
