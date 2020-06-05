@@ -128,11 +128,10 @@ h1 {
 }
 
 .memory-game {
-  width: 50vw;
-  height: 50vh;
-  margin: auto;
+  width: 70vw;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   perspective: 1000px;
 }
 
