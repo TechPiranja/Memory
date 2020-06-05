@@ -76,6 +76,7 @@ function createBoard(pairSize) {
     div.appendChild(backFace);
     div.setAttribute("id", "card" + i);
     div.addEventListener("click", flipCard);
+    div.addEventListener("transitionend", checkCards);
 
     board.appendChild(div);
   }
@@ -122,18 +123,32 @@ var flippedCards = {};
 var flippedCounter = 0;
 
 function flipCard() {
-  if (flippedCounter < 2) {
-    this.classList.toggle("flip");
-    flippedCards[flippedCounter] = this.id;
-    flippedCounter++;
-  } else {
-    let firstFlipped = document.getElementById(flippedCards[0]);
-    firstFlipped.classList.toggle("flip");
-    let secondFlipped = document.getElementById(flippedCards[1]);
-    secondFlipped.classList.toggle("flip");
-    this.classList.toggle("flip");
+  if (flippedCounter == 2) {
     flippedCounter = 0;
-    flippedCards[flippedCounter] = this.id;
-    flippedCounter++;
   }
+  this.classList.toggle("flip");
+  flippedCards[flippedCounter] = this.id;
+  flippedCounter++;
+}
+
+function checkCards() {
+  console.log("test");
+  if (flippedCounter == 2) {
+    let firstFlipped = document.getElementById(flippedCards[0]);
+    let secondFlipped = document.getElementById(flippedCards[1]);
+    let board = document.getElementById("board");
+    if (firstFlipped.innerHTML == secondFlipped.innerHTML) {
+      sleep(1);
+      board.removeChild(firstFlipped);
+      board.removeChild(secondFlipped);
+    } else {
+      firstFlipped.classList.toggle("flip");
+      secondFlipped.classList.toggle("flip");
+    }
+  }
+}
+
+function sleep(seconds) {
+  var waitUntil = new Date().getTime() + seconds * 1000;
+  while (new Date().getTime() < waitUntil) true;
 }
