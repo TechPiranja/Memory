@@ -118,7 +118,7 @@ function createBoard(pairSize) {
     tagFront.classList.add("emoji");
 
     let tagBack = document.createElement("p");
-    tagBack.innerHTML = "&#8987;";
+    tagBack.innerHTML = "&#129412;";
     tagBack.classList.add("emoji");
 
     frontFace.appendChild(tagFront);
@@ -192,8 +192,8 @@ function checkCards() {
     let board = document.getElementById("board");
     if (firstFlipped.innerHTML == secondFlipped.innerHTML) {
       sleep(1);
-      board.removeChild(firstFlipped);
-      board.removeChild(secondFlipped);
+      firstFlipped.style.visibility = "hidden";
+      secondFlipped.style.visibility = "hidden";
     } else {
       firstFlipped.classList.toggle("flip");
       secondFlipped.classList.toggle("flip");
