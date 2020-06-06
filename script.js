@@ -109,6 +109,8 @@ function startGame() {
   gameOver = false;
   timer();
 
+  setActivePlayer(false);
+
   createBoard(pairSize);
 }
 
@@ -181,7 +183,8 @@ function addPlayers(playerId) {
   tag.appendChild(text);
   div.appendChild(tag);
   div.classList.add("player");
-  div.setAttribute("id", "player" + playerId);
+  div.classList.add("player" + playerId);
+  div.setAttribute("id", "playerAvatar" + playerId);
   playerAvatars.appendChild(div);
 }
 
@@ -236,12 +239,23 @@ function checkCards() {
     } else {
       firstFlipped.classList.toggle("flip");
       secondFlipped.classList.toggle("flip");
-      activePlayer = (activePlayer + 1) % players.length;
+
+      setActivePlayer(true);
       console.log("changing players! Playing: " + activePlayer);
     }
     flippedCounter = 0;
     flippedCards = {};
   }
+}
+
+function setActivePlayer(withChange) {
+  if (withChange) {
+    let lastActivePlayerAvatar = document.getElementById("playerAvatar" + (activePlayer + 1));
+    lastActivePlayerAvatar.classList.remove("active-player");
+    activePlayer = (activePlayer + 1) % players.length;
+  }
+  var activeAvatar = document.getElementById("playerAvatar" + (activePlayer + 1));
+  activeAvatar.classList.add("active-player");
 }
 
 function sleep(seconds) {
