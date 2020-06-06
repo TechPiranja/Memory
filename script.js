@@ -135,6 +135,7 @@ getNewRandomEmoji = function () {
 
 function createBoard(pairSize) {
   let board = document.getElementById("board");
+  board.innerHTML = "";
   for (let i = 0; i < pairSize * 2; i++) {
     let div = document.createElement("div");
     div.classList.add("memory-card");
@@ -257,4 +258,22 @@ function determineWinner() {
   }
   if (isDraft) alert("Draft with " + highestPoints + " points!");
   else alert(players[bestPlayers[0]] + " won with " + highestPoints + " points!");
+}
+
+function resetGame() {
+  let configuration = document.getElementById("configuration");
+  configuration.style.display = "block";
+
+  let game = document.getElementById("game");
+  game.style.display = "none";
+
+  playerRange = 1;
+  pairRange = 5;
+  foundPairs = 0;
+  players = [];
+  activePlayer = 0;
+  playerPoints = {};
+  usedEmojis = [];
+  flippedCards = {};
+  flippedCounter = 0;
 }
