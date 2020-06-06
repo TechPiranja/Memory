@@ -102,10 +102,12 @@ function startGame() {
   let pairSize = document.getElementById("outputPairSize").innerHTML;
   fillUsedEmojiList();
   for (let i = 0; i < players.length; i++) playerPoints[i] = 0;
+
+  document.getElementById("time").innerHTML = 0 + "m " + 0 + "s ";
   countUpDate = new Date().getTime();
   now = new Date().getTime();
   gameOver = false;
-  document.getElementById("time").innerHTML = 0 + "m " + 0 + "s ";
+  timer();
 
   createBoard(pairSize);
 }
@@ -292,21 +294,23 @@ function resetGame() {
 }
 
 // Update the count down every 1 second
-var x = setInterval(function () {
-  // Get today's date and time
-  now = new Date().getTime();
+function timer() {
+  let x = setInterval(function () {
+    // Get today's date and time
+    now = new Date().getTime();
 
-  // Find the distance between now and the count down date
-  let distance = now - countUpDate;
+    // Find the distance between now and the count down date
+    let distance = now - countUpDate;
 
-  let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // Display the result in the element with id="demo"
-  document.getElementById("time").innerHTML = minutes + "m " + seconds + "s ";
+    // Display the result in the element with id="demo"
+    document.getElementById("time").innerHTML = minutes + "m " + seconds + "s ";
 
-  // If the count down is finished, write some text
-  if (gameOver) {
-    clearInterval(x);
-  }
-}, 1000);
+    // If the count down is finished, write some text
+    if (gameOver) {
+      clearInterval(x);
+    }
+  }, 1000);
+}
