@@ -1,5 +1,6 @@
 var playerRange = 1;
 var pairRange = 5;
+var foundPairs = 0;
 var players = [];
 var activePlayer = 0;
 var playerPoints = {};
@@ -219,6 +220,8 @@ function checkCards() {
       secondFlipped.removeEventListener("click", flipCard);
       playerPoints[activePlayer] += 1;
       console.log(playerPoints);
+      foundPairs++;
+      if (foundPairs == pairRange) determineWinner();
     } else {
       firstFlipped.classList.toggle("flip");
       secondFlipped.classList.toggle("flip");
@@ -233,4 +236,24 @@ function checkCards() {
 function sleep(seconds) {
   var waitUntil = new Date().getTime() + seconds * 1000;
   while (new Date().getTime() < waitUntil) true;
+}
+
+function determineWinner() {
+  let highestPoints = 0;
+  let bestPlayers = [];
+  let isDraft = false;
+  for (let i = 0; i < players.length; i++) {
+    if (playerPoints[i] > highestPoints) {
+      isDraft = false;
+      highestPoints = playerPoints[i];
+      bestPlayers = [];
+      bestPlayers.push(i);
+    } else if (playerPoints[i] == highestPoints) {
+      isDraft = true;
+      highestPoints = playerPoints[i];
+      bestPlayers.push(i);
+    }
+  }
+  if (isDraft) alert("Players " + bestPlayers + " draft with " + highestPoints + " points!");
+  else alert("Player " + bestPlayers + " won with " + highestPoints + " points!");
 }
