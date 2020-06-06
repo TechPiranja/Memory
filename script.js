@@ -4,6 +4,9 @@ var foundPairs = 0;
 var players = [];
 var activePlayer = 0;
 var playerPoints = {};
+var gameOver = false;
+var countUpDate = new Date().getTime();
+var now = new Date().getTime();
 var emojis = [
   "&#9875",
   "&#9889",
@@ -99,6 +102,11 @@ function startGame() {
   let pairSize = document.getElementById("outputPairSize").innerHTML;
   fillUsedEmojiList();
   for (let i = 0; i < players.length; i++) playerPoints[i] = 0;
+  countUpDate = new Date().getTime();
+  now = new Date().getTime();
+  gameOver = false;
+  document.getElementById("time").innerHTML = 0 + "m " + 0 + "s ";
+
   createBoard(pairSize);
 }
 
@@ -135,7 +143,6 @@ getNewRandomEmoji = function () {
 
 function createBoard(pairSize) {
   let board = document.getElementById("board");
-  board.innerHTML = "";
   for (let i = 0; i < pairSize * 2; i++) {
     let div = document.createElement("div");
     div.classList.add("memory-card");
@@ -256,6 +263,7 @@ function determineWinner() {
       bestPlayers.push(i);
     }
   }
+  gameOver = true;
   if (isDraft) alert("Draft with " + highestPoints + " points!");
   else alert(players[bestPlayers[0]] + " won with " + highestPoints + " points!");
 }
@@ -276,4 +284,29 @@ function resetGame() {
   usedEmojis = [];
   flippedCards = {};
   flippedCounter = 0;
+
+  let board = document.getElementById("board");
+  board.innerHTML = "";
+  let playerAvatars = document.getElementById("playerAvatars");
+  playerAvatars.innerHTML = "";
 }
+
+// Update the count down every 1 second
+var x = setInterval(function () {
+  // Get today's date and time
+  now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  let distance = now - countUpDate;
+
+  let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+  document.getElementById("time").innerHTML = minutes + "m " + seconds + "s ";
+
+  // If the count down is finished, write some text
+  if (gameOver) {
+    clearInterval(x);
+  }
+}, 1000);
