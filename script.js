@@ -68,6 +68,7 @@ function setPlayerRange() {
     let label = document.createElement("lavel");
     input.setAttribute("type", "text");
     input.setAttribute("id", "player" + playerRange);
+    input.value = "Player " + playerRange;
     input.addEventListener("input", setPlayerName);
     label.innerHTML = "Name: ";
     tag.appendChild(text);
@@ -254,6 +255,6 @@ function determineWinner() {
       bestPlayers.push(i);
     }
   }
-  if (isDraft) alert("Players " + bestPlayers + " draft with " + highestPoints + " points!");
-  else alert("Player " + bestPlayers + " won with " + highestPoints + " points!");
+  if (isDraft) alert("Draft with " + highestPoints + " points!");
+  else alert(players[bestPlayers[0]] + " won with " + highestPoints + " points!");
 }
