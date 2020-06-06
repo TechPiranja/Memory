@@ -1,7 +1,8 @@
 var playerRange = 1;
 var pairRange = 5;
-var players = {};
-
+var players = [];
+var activePlayer = 0;
+var playerPoints = {};
 var emojis = [
   "&#9875",
   "&#9889",
@@ -95,6 +96,7 @@ function startGame() {
 
   let pairSize = document.getElementById("outputPairSize").innerHTML;
   fillUsedEmojiList();
+  for (let i = 0; i < players.length; i++) playerPoints[i] = 0;
   createBoard(pairSize);
 }
 
@@ -201,10 +203,6 @@ var flippedCounter = 0;
 
 function flipCard() {
   if (flippedCards[0] != this.id && flippedCards[1] != this.id) {
-    if (flippedCounter == 2) {
-      flippedCounter = 0;
-      flippedCards = {};
-    }
     this.classList.toggle("flip");
     flippedCards[flippedCounter] = this.id;
     flippedCounter++;
@@ -213,16 +211,22 @@ function flipCard() {
 
 function checkCards() {
   if (flippedCounter == 2) {
+    console.log("checking cards, currect active player: " + activePlayer);
     let firstFlipped = document.getElementById(flippedCards[0]);
     let secondFlipped = document.getElementById(flippedCards[1]);
-    let board = document.getElementById("board");
     if (firstFlipped.innerHTML == secondFlipped.innerHTML) {
       firstFlipped.removeEventListener("click", flipCard);
       secondFlipped.removeEventListener("click", flipCard);
+      playerPoints[activePlayer] += 1;
+      console.log(playerPoints);
     } else {
       firstFlipped.classList.toggle("flip");
       secondFlipped.classList.toggle("flip");
+      activePlayer = (activePlayer + 1) % players.length;
+      console.log("changing players! Playing: " + activePlayer);
     }
+    flippedCounter = 0;
+    flippedCards = {};
   }
 }
 
