@@ -161,6 +161,7 @@ h1 {
   border-radius: 10px;
   background: #1c7ccc;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .memory-card:active {
