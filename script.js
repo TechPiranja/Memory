@@ -180,7 +180,7 @@ function addPlayers(playerId) {
   let playerAvatars = document.getElementById("playerAvatars");
   let div = document.createElement("div");
   let tag = document.createElement("p");
-  let text = document.createTextNode("P" + playerId + ": " + players[playerId - 1]);
+  let text = document.createTextNode(players[playerId - 1]);
   tag.appendChild(text);
   div.appendChild(tag);
   div.classList.add("player");
@@ -284,12 +284,6 @@ function determineWinner() {
 }
 
 function resetGame() {
-  let configuration = document.getElementById("configuration");
-  configuration.style.display = "block";
-
-  let game = document.getElementById("game");
-  game.style.display = "none";
-
   playerRange = 1;
   pairRange = 5;
   foundPairs = 0;
@@ -300,6 +294,10 @@ function resetGame() {
   flippedCards = {};
   flippedCounter = 0;
 
+  let configuration = document.getElementById("configuration");
+  configuration.style.display = "block";
+  let game = document.getElementById("game");
+  game.style.display = "none";
   let board = document.getElementById("board");
   board.innerHTML = "";
   let playerAvatars = document.getElementById("playerAvatars");
