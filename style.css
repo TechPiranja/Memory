@@ -6,7 +6,6 @@
 
 body {
   display: flex;
-  height: 100vh;
   justify-content: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #64b5f6;
@@ -20,7 +19,7 @@ body {
   justify-items: center;
   background-color: white;
   border-radius: 15px;
-  margin: 20px;
+  margin: 5px;
   padding: 10px;
   max-width: 290px;
 }
@@ -126,7 +125,7 @@ h1 {
 }
 
 .memory-game {
-  width: 70vw;
+  max-width: 1200px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -139,8 +138,11 @@ h1 {
   height: 100px;
   margin: 5px;
   position: relative;
+  -webkit-transform: scale(1);
   transform: scale(1);
+  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
+  -webkit-transition: transform 0.5s;
   transition: transform 0.5s;
   cursor: pointer;
 }
@@ -183,4 +185,25 @@ h1 {
   border-style: solid;
   border-width: 5px;
   border-color: #ffcc80;
+}
+
+@media only screen and (max-width: 500px) {
+  .emoji {
+    font-size: 35px;
+  }
+
+  .card {
+    width: 50px;
+    height: 50px;
+  }
+
+  p {
+    font-size: 10pt;
+  }
+  button {
+    font-size: 15pt;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 5px;
+  }
 }
