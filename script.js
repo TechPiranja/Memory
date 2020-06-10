@@ -7,6 +7,7 @@ var playerPoints = {};
 var gameOver = false;
 var countUpDate = new Date().getTime();
 var now = new Date().getTime();
+let lockActions = false;
 var emojis = [
   "&#9875",
   "&#9889",
@@ -149,11 +150,11 @@ function createBoard(pairSize) {
   let board = document.getElementById("board");
   for (let i = 0; i < pairSize * 2; i++) {
     let div = document.createElement("div");
-    div.classList.add("memory-card");
+    div.classList.add("card");
     let frontFace = document.createElement("div");
     let backFace = document.createElement("div");
-    frontFace.classList.add("front-face");
-    backFace.classList.add("back-face");
+    frontFace.classList.add("front");
+    backFace.classList.add("back");
 
     let tagFront = document.createElement("p");
     tagFront.innerHTML = usedEmojis[i];
@@ -217,7 +218,8 @@ var flippedCards = {};
 var flippedCounter = 0;
 
 function flipCard() {
-  if (flippedCards[0] != this.id && flippedCards[1] != this.id) {
+  if (lockActions) return;
+  if (flippedCards[0] != this.id && flippedCards[1] != this.id && flippedCounter < 2) {
     this.classList.toggle("flip");
     flippedCards[flippedCounter] = this.id;
     flippedCounter++;
@@ -226,22 +228,23 @@ function flipCard() {
 
 function checkCards() {
   if (flippedCounter == 2) {
-    console.log("checking cards, currect active player: " + activePlayer);
     let firstFlipped = document.getElementById(flippedCards[0]);
     let secondFlipped = document.getElementById(flippedCards[1]);
     if (firstFlipped.innerHTML == secondFlipped.innerHTML) {
       firstFlipped.removeEventListener("click", flipCard);
       secondFlipped.removeEventListener("click", flipCard);
       playerPoints[activePlayer] += 1;
-      console.log(playerPoints);
       foundPairs++;
       if (foundPairs == pairRange) determineWinner();
     } else {
-      firstFlipped.classList.toggle("flip");
-      secondFlipped.classList.toggle("flip");
+      lockActions = true;
+      setTimeout(() => {
+        firstFlipped.classList.toggle("flip");
+        secondFlipped.classList.toggle("flip");
 
-      setActivePlayer(true);
-      console.log("changing players! Playing: " + activePlayer);
+        lockActions = false;
+        setActivePlayer(true);
+      }, 800);
     }
     flippedCounter = 0;
     flippedCards = {};
@@ -256,11 +259,6 @@ function setActivePlayer(withChange) {
   }
   var activeAvatar = document.getElementById("playerAvatar" + (activePlayer + 1));
   activeAvatar.classList.add("active-player");
-}
-
-function sleep(seconds) {
-  var waitUntil = new Date().getTime() + seconds * 1000;
-  while (new Date().getTime() < waitUntil) true;
 }
 
 function determineWinner() {
@@ -307,22 +305,14 @@ function resetGame() {
   playerAvatars.innerHTML = "";
 }
 
-// Update the count down every 1 second
 function timer() {
   let x = setInterval(function () {
-    // Get today's date and time
     now = new Date().getTime();
-
-    // Find the distance between now and the count down date
     let distance = now - countUpDate;
-
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    // Display the result in the element with id="demo"
     document.getElementById("time").innerHTML = minutes + "m " + seconds + "s ";
 
-    // If the count down is finished, write some text
     if (gameOver) {
       clearInterval(x);
     }

@@ -23,7 +23,6 @@ body {
   margin: 20px;
   padding: 10px;
   max-width: 290px;
-  /*delete this to function properly*/
 }
 
 button,
@@ -82,7 +81,7 @@ h1 {
   justify-content: space-between;
 }
 
-.game {
+.gameContainer {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -126,15 +125,6 @@ h1 {
   justify-content: center;
 }
 
-.card {
-  background-color: #9fa8da;
-  width: 100px;
-  height: 100px;
-  border-radius: 15px;
-  margin: 5px;
-  cursor: pointer;
-}
-
 .memory-game {
   width: 70vw;
   display: flex;
@@ -144,7 +134,7 @@ h1 {
   perspective: 1000px;
 }
 
-.memory-card {
+.card {
   width: 100px;
   height: 100px;
   margin: 5px;
@@ -155,13 +145,13 @@ h1 {
   cursor: pointer;
 }
 
-.front-face {
+.front {
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 
-.front-face,
-.back-face {
+.front,
+.back {
   display: flex;
   width: 100%;
   height: 100%;
@@ -174,13 +164,13 @@ h1 {
   -webkit-backface-visibility: hidden;
 }
 
-.memory-card:active {
+.card:active {
   -webkit-transform: scale(0.97);
   transform: scale(0.97);
   transition: transform 0.2s;
 }
 
-.memory-card.flip {
+.card.flip {
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
