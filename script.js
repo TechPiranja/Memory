@@ -252,6 +252,7 @@ function checkCards() {
 }
 
 function setActivePlayer(withChange) {
+  if (gameOver) return;
   if (withChange) {
     let lastActivePlayerAvatar = document.getElementById("playerAvatar" + (activePlayer + 1));
     lastActivePlayerAvatar.classList.remove("active-player");
