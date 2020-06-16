@@ -64,25 +64,29 @@ function setPlayerRange() {
   playerRange = document.getElementById("playerRange").value;
   document.getElementById("outputPlayerSize").innerHTML = playerRange;
   let playerNameDiv = document.getElementById("playerNames");
-
-  if (temp < playerRange) {
-    let div = document.createElement("div");
-    let tag = document.createElement("p");
-    let text = document.createTextNode("Player " + playerRange);
-    let input = document.createElement("input");
-    let label = document.createElement("lavel");
-    input.setAttribute("type", "text");
-    input.setAttribute("id", "player" + playerRange);
-    input.value = "Player " + playerRange;
-    input.addEventListener("input", setPlayerName);
-    label.innerHTML = "Name: ";
-    tag.appendChild(text);
-    div.appendChild(tag);
-    div.appendChild(label);
-    div.appendChild(input);
-    playerNameDiv.appendChild(div);
-  } else if (temp > playerRange) {
-    playerNameDiv.removeChild(playerNameDiv.lastChild);
+  let loopCount = Math.abs(temp - playerRange);
+  for (let i = 0; i < loopCount; i++) {
+    if (temp < playerRange) {
+      temp++;
+      let div = document.createElement("div");
+      let tag = document.createElement("p");
+      let text = document.createTextNode("Player " + temp);
+      let input = document.createElement("input");
+      let label = document.createElement("lavel");
+      input.setAttribute("type", "text");
+      input.setAttribute("id", "player" + temp);
+      input.value = "Player " + temp;
+      input.addEventListener("input", setPlayerName);
+      label.innerHTML = "Name: ";
+      tag.appendChild(text);
+      div.appendChild(tag);
+      div.appendChild(label);
+      div.appendChild(input);
+      playerNameDiv.appendChild(div);
+    } else if (temp > playerRange) {
+      playerNameDiv.removeChild(playerNameDiv.lastChild);
+      temp--;
+    }
   }
 }
 
@@ -194,23 +198,6 @@ function resetSettings() {
 
   document.getElementById("playerRange").value = 1;
   setPlayerRange();
-
-  let playerNameDiv = document.getElementById("playerNames");
-  playerNameDiv.innerHTML = "";
-  let div = document.createElement("div");
-  let tag = document.createElement("p");
-  let text = document.createTextNode("Player " + playerRange);
-  let input = document.createElement("input");
-  let label = document.createElement("label");
-  input.setAttribute("type", "text");
-  input.setAttribute("id", "player" + playerRange);
-  input.addEventListener("input", setPlayerName);
-  label.innerHTML = "Name: ";
-  tag.appendChild(text);
-  div.appendChild(tag);
-  div.appendChild(label);
-  div.appendChild(input);
-  playerNameDiv.appendChild(div);
 }
 
 var flippedCards = {};
@@ -287,7 +274,6 @@ function determineWinner() {
 
 function resetGame() {
   gameOver = true;
-  playerRange = 1;
   foundPairs = 0;
   activePlayer = 0;
   playerPoints = {};
