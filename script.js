@@ -8,6 +8,7 @@ var gameOver = false;
 var countUpDate = new Date().getTime();
 var now = new Date().getTime();
 let lockActions = false;
+let totalAttempts = 0;
 var emojis = [
   "&#9875",
   "&#9889",
@@ -97,8 +98,8 @@ function startGame() {
   let configuration = document.getElementById("configuration");
   configuration.style.display = "none";
 
-  let game = document.getElementById("game");
-  game.style.display = "block";
+  let gameScreen = document.getElementById("gameScreen");
+  gameScreen.style.display = "block";
 
   let pairSize = document.getElementById("outputPairSize").innerHTML;
   fillUsedEmojiList();
@@ -111,7 +112,6 @@ function startGame() {
   timer();
 
   setActivePlayer(false);
-
   createBoard(pairSize);
 }
 
@@ -246,6 +246,9 @@ function checkCards() {
         setActivePlayer(true);
       }, 800);
     }
+    let totalAttemptsText = document.getElementById("totalAttempts");
+    totalAttempts++;
+    totalAttemptsText.innerHTML = "Total attempts: " + totalAttempts;
     flippedCounter = 0;
     flippedCards = {};
   }
@@ -293,11 +296,12 @@ function resetGame() {
   usedEmojis = [];
   flippedCards = {};
   flippedCounter = 0;
+  totalAttempts = 0;
 
   let configuration = document.getElementById("configuration");
   configuration.style.display = "block";
-  let game = document.getElementById("game");
-  game.style.display = "none";
+  let gameScreen = document.getElementById("gameScreen");
+  gameScreen.style.display = "none";
   let board = document.getElementById("board");
   board.innerHTML = "";
   let playerAvatars = document.getElementById("playerAvatars");
