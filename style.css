@@ -103,11 +103,10 @@ h1 {
   background-color: white;
   border-radius: 15px;
   margin: 20px;
-  padding: 10px;
 }
 
 .player {
-  border-radius: 15px;
+  border-radius: 10px;
   text-align: center;
   margin: 5px;
   padding-left: 10px;
@@ -137,10 +136,12 @@ h1 {
 
 #playerAvatars {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  background-color: #eeeeee;
 }
 
 .memory-game {
+  margin: 5px;
   max-width: 1200px;
   display: flex;
   flex-wrap: wrap;
@@ -250,7 +251,6 @@ h1 {
     background-color: white;
     border-radius: 15px;
     margin: 15px;
-    padding: 10px;
   }
 
   .resetGame {
@@ -268,7 +268,7 @@ h1 {
     height: 40px;
   }
   .player {
-    margin: 0;
+    margin: 5px;
     padding: 0;
   }
   p {
@@ -280,14 +280,13 @@ h1 {
   }
   h1 {
     font-size: 18px;
-    margin: 5px;
+    margin: 10px;
   }
   .gameContainer {
     display: flex;
     flex-direction: column;
     background-color: white;
     border-radius: 15px;
-    margin: 15px;
-    padding: 10px;
+    margin: 10px;
   }
 }
