@@ -82,6 +82,7 @@ function setPlayerRange() {
       div.appendChild(tag);
       div.appendChild(label);
       div.appendChild(input);
+      div.classList.add("playerSetup");
       playerNameDiv.appendChild(div);
     } else if (temp > playerRange) {
       playerNameDiv.removeChild(playerNameDiv.lastChild);

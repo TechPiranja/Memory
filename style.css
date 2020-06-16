@@ -29,7 +29,6 @@ p {
   font-size: 15pt;
   margin-bottom: 5px;
   margin-top: 5px;
-  padding: 5px;
 }
 
 #time {
@@ -134,9 +133,15 @@ h1 {
   background-color: #b2dfdb;
 }
 
+.playerSetup {
+  margin-bottom: 10px;
+}
+
 #playerAvatars {
   display: flex;
   justify-content: space-evenly;
+  align-content: center;
+  text-align: center;
   background-color: #eeeeee;
 }
 
@@ -225,7 +230,7 @@ h1 {
     height: 50px;
   }
   p {
-    font-size: 10pt;
+    font-size: 11pt;
   }
   button {
     font-size: 12pt;
@@ -268,19 +273,20 @@ h1 {
     height: 40px;
   }
   .player {
-    margin: 5px;
-    padding: 0;
-  }
-  p {
-    margin: 2px;
-    padding: 2px;
+    margin: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
   .active-player {
-    border-width: 2px;
+    border-width: 3px;
   }
   h1 {
     font-size: 18px;
     margin: 10px;
+  }
+  p {
+    margin: 0;
+    padding: 0;
   }
   .gameContainer {
     display: flex;
