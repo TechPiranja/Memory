@@ -7,8 +7,8 @@ var playerPoints = {};
 var gameOver = false;
 var countUpDate = new Date().getTime();
 var now = new Date().getTime();
-let lockActions = false;
-let totalAttempts = 0;
+var lockActions = false;
+var totalAttempts = 0;
 var emojis = [
   "&#9875",
   "&#9889",
@@ -101,7 +101,6 @@ function startGame() {
   let gameScreen = document.getElementById("gameScreen");
   gameScreen.style.display = "block";
 
-  let pairSize = document.getElementById("outputPairSize").innerHTML;
   fillUsedEmojiList();
   for (let i = 0; i < players.length; i++) playerPoints[i] = 0;
 
@@ -112,7 +111,7 @@ function startGame() {
   timer();
 
   setActivePlayer(false);
-  createBoard(pairSize);
+  createBoard(pairRange);
 }
 
 var usedEmojis = [];
@@ -287,10 +286,9 @@ function determineWinner() {
 }
 
 function resetGame() {
+  gameOver = true;
   playerRange = 1;
-  pairRange = 5;
   foundPairs = 0;
-  players = [];
   activePlayer = 0;
   playerPoints = {};
   usedEmojis = [];
