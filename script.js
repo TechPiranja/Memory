@@ -53,6 +53,7 @@ var emojis = [
   "&#128527",
   "&#129412",
 ];
+var usedEmojis = [];
 
 function setPairRange() {
   pairRange = document.getElementById("pairRange").value;
@@ -118,8 +119,6 @@ function startGame() {
   setActivePlayer(false);
   createBoard(pairRange);
 }
-
-var usedEmojis = [];
 
 function fillUsedEmojiList() {
   for (let i = 0; i < pairRange * 2; i += 2) {
