@@ -108,8 +108,7 @@ function startGame() {
   gameScreen.style.display = "block";
 
   fillUsedEmojiList();
-  for (let i = 0; i < players.length; i++) playerPoints[i] = 0;
-
+  playerPoints = new Array(players.length).fill(0);
   document.getElementById("time").innerHTML = 0 + "m " + 0 + "s ";
   countUpDate = new Date().getTime();
   now = new Date().getTime();
@@ -117,7 +116,7 @@ function startGame() {
   timer();
 
   setActivePlayer(false);
-  createBoard(pairRange);
+  createBoard();
 }
 
 function fillUsedEmojiList() {
@@ -126,9 +125,7 @@ function fillUsedEmojiList() {
     usedEmojis[i] = emoji;
     usedEmojis[i + 1] = emoji;
   }
-
   shuffleArr(usedEmojis);
-  console.log(usedEmojis);
 }
 
 function shuffleArr(array) {
@@ -149,9 +146,9 @@ getNewRandomEmoji = function () {
   return emoji;
 };
 
-function createBoard(pairSize) {
+function createBoard() {
   let board = document.getElementById("board");
-  for (let i = 0; i < pairSize * 2; i++) {
+  for (let i = 0; i < pairRange * 2; i++) {
     let div = document.createElement("div");
     div.classList.add("card");
     let frontFace = document.createElement("div");
