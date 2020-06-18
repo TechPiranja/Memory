@@ -8,7 +8,7 @@ var gameOver = false;
 var countUpDate = new Date().getTime();
 var now = new Date().getTime();
 var lockActions = false;
-var totalAttempts = 0;
+var totalTries = 0;
 var emojis = [
   "&#9875",
   "&#9889",
@@ -177,10 +177,18 @@ function createBoard() {
 function addPlayers(playerId) {
   let playerAvatars = document.getElementById("playerAvatars");
   let div = document.createElement("div");
-  let tag = document.createElement("p");
-  let text = document.createTextNode(players[playerId - 1]);
-  tag.appendChild(text);
-  div.appendChild(tag);
+  let tagPlayerName = document.createElement("p");
+  let textPlayerName = document.createTextNode(players[playerId - 1]);
+  let tagScore = document.createElement("p");
+  let textScore = document.createTextNode("Score: 0");
+  let tagTries = document.createElement("p");
+  let textTries = document.createTextNode("Tries: 0");
+  tagPlayerName.appendChild(textPlayerName);
+  tagScore.appendChild(textScore);
+  tagTries.appendChild(textTries);
+  div.appendChild(tagPlayerName);
+  div.appendChild(tagScore);
+  div.appendChild(tagTries);
   div.classList.add("player");
   div.classList.add("player" + playerId);
   div.setAttribute("id", "playerAvatar" + playerId);
@@ -227,9 +235,9 @@ function checkCards() {
         setActivePlayer(true);
       }, 800);
     }
-    let totalAttemptsText = document.getElementById("totalAttempts");
-    totalAttempts++;
-    totalAttemptsText.innerHTML = "Total attempts: " + totalAttempts;
+    let totalTriesText = document.getElementById("totalTries");
+    totalTries++;
+    totalTriesText.innerHTML = "Total Tries: " + totalTries;
     flippedCounter = 0;
     flippedCards = {};
   }
@@ -275,7 +283,7 @@ function resetGame() {
   usedEmojis = [];
   flippedCards = {};
   flippedCounter = 0;
-  totalAttempts = 0;
+  totalTries = 0;
 
   let configuration = document.getElementById("configuration");
   configuration.style.display = "block";
