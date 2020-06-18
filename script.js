@@ -161,8 +161,6 @@ function createBoard() {
     tagFront.classList.add("emoji");
 
     let tagBack = document.createElement("p");
-    tagBack.innerHTML = "&#129412;";
-    tagBack.classList.add("emoji");
 
     frontFace.appendChild(tagFront);
     backFace.appendChild(tagBack);
