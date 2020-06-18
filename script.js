@@ -3,7 +3,8 @@ var pairRange = 5;
 var foundPairs = 0;
 var players = [];
 var activePlayer = 0;
-var playerPoints = {};
+var playerScore = {};
+var playerTries = {};
 var gameOver = false;
 var countUpDate = new Date().getTime();
 var now = new Date().getTime();
@@ -108,7 +109,8 @@ function startGame() {
   gameScreen.style.display = "block";
 
   fillUsedEmojiList();
-  playerPoints = new Array(players.length).fill(0);
+  playerScore = new Array(players.length).fill(0);
+  playerTries = new Array(players.length).fill(0);
   document.getElementById("time").innerHTML = 0 + "m " + 0 + "s ";
   countUpDate = new Date().getTime();
   now = new Date().getTime();
@@ -181,8 +183,10 @@ function addPlayers(playerId) {
   let textPlayerName = document.createTextNode(players[playerId - 1]);
   let tagScore = document.createElement("p");
   let textScore = document.createTextNode("Score: 0");
+  tagScore.setAttribute("id", "playerScore" + (playerId - 1));
   let tagTries = document.createElement("p");
   let textTries = document.createTextNode("Tries: 0");
+  tagTries.setAttribute("id", "playerTries" + (playerId - 1));
   tagPlayerName.appendChild(textPlayerName);
   tagScore.appendChild(textScore);
   tagTries.appendChild(textTries);
@@ -222,8 +226,9 @@ function checkCards() {
     if (firstFlipped.innerHTML == secondFlipped.innerHTML) {
       firstFlipped.removeEventListener("click", flipCard);
       secondFlipped.removeEventListener("click", flipCard);
-      playerPoints[activePlayer] += 1;
       foundPairs++;
+      playerScore[activePlayer] += 1;
+      document.getElementById("playerScore" + activePlayer).innerHTML = "Score: " + playerScore[activePlayer];
       if (foundPairs == pairRange) determineWinner();
     } else {
       lockActions = true;
@@ -235,6 +240,9 @@ function checkCards() {
         setActivePlayer(true);
       }, 800);
     }
+    playerTries[activePlayer] += 1;
+    document.getElementById("playerTries" + activePlayer).innerHTML = "Tries: " + playerTries[activePlayer];
+
     let totalTriesText = document.getElementById("totalTries");
     totalTries++;
     totalTriesText.innerHTML = "Total Tries: " + totalTries;
@@ -259,14 +267,14 @@ function determineWinner() {
   let bestPlayers = [];
   let isDraft = false;
   for (let i = 0; i < players.length; i++) {
-    if (playerPoints[i] > highestPoints) {
+    if (playerScore[i] > highestPoints) {
       isDraft = false;
-      highestPoints = playerPoints[i];
+      highestPoints = playerScore[i];
       bestPlayers = [];
       bestPlayers.push(i);
-    } else if (playerPoints[i] == highestPoints) {
+    } else if (playerScore[i] == highestPoints) {
       isDraft = true;
-      highestPoints = playerPoints[i];
+      highestPoints = playerScore[i];
       bestPlayers.push(i);
     }
   }
@@ -279,7 +287,8 @@ function resetGame() {
   gameOver = true;
   foundPairs = 0;
   activePlayer = 0;
-  playerPoints = {};
+  playerScore = {};
+  playerTries = {};
   usedEmojis = [];
   flippedCards = {};
   flippedCounter = 0;
