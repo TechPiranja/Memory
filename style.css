@@ -226,7 +226,7 @@ h1 {
 
 @media only screen and (max-width: 900px) {
   .emoji {
-    font-size: 25px;
+    font-size: 40px;
   }
 
   .card {
@@ -236,6 +236,8 @@ h1 {
 
   p {
     font-size: 11pt;
+    margin: 0;
+    padding: 0;
   }
 
   button {
@@ -248,6 +250,8 @@ h1 {
     text-align: center;
     color: #0d47a1;
     margin: 15px;
+    font-size: 18px;
+    margin: 10px;
   }
 
   .configuration {
@@ -260,44 +264,31 @@ h1 {
     flex-direction: column;
     background-color: white;
     border-radius: 15px;
-    margin: 15px;
+    margin: 10px;
   }
 
   .resetGame {
     margin-left: 15px;
   }
-}
 
-@media only screen and (max-height: 900px) and (max-width: 600px) {
-  .emoji {
-    font-size: 25px;
-  }
-
-  .card {
-    width: 40px;
-    height: 40px;
-  }
   .player {
     margin: 4px;
     padding-left: 5px;
     padding-right: 5px;
   }
+
   .active-player {
     border-width: 3px;
   }
-  h1 {
-    font-size: 18px;
-    margin: 10px;
+}
+
+@media only screen and (max-height: 900px) and (max-width: 600px) {
+  .card {
+    width: 40px;
+    height: 40px;
   }
-  p {
-    margin: 0;
-    padding: 0;
-  }
-  .gameContainer {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    border-radius: 15px;
-    margin: 10px;
+
+  .emoji {
+    font-size: 30px;
   }
 }
