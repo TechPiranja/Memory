@@ -289,12 +289,12 @@ function determineWinner() {
   document.getElementById("winnerPopup").style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
-function closeModal() {
+// When the user clicks on <span> (x), close the popup
+function closePopup() {
   document.getElementById("winnerPopup").style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
+// When the user clicks anywhere outside of the popup, close it
 window.onclick = function (event) {
   let modal = document.getElementById("winnerPopup");
   if (event.target == modal) {
