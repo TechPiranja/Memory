@@ -228,7 +228,7 @@ h1 {
   display: none;
   position: fixed;
   z-index: 1;
-  padding-top: 100px;
+  padding-top: 150px;
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -240,11 +240,15 @@ h1 {
   margin: auto;
   padding: 20px;
   width: 80%;
+  max-width: 400px;
   border-radius: 15px;
   text-align: center;
 }
 
 .close {
+  position: relative;
+  top: -15px;
+  right: -10px;
   color: #aaaaaa;
   float: right;
   font-size: 28px;

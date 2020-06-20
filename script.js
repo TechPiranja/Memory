@@ -284,19 +284,14 @@ function determineWinner() {
         return " " + players[playerId];
       })
     : "The winner is: " + players[bestPlayers[0]];
-  document.getElementById("playerTries").innerHTML = "Score: " + highestPoints;
-  // popup functions
-  let modal = document.getElementById("winnerPopup");
-  modal.style.display = "block";
-
-  //if (isDraft) alert("Draft with " + highestPoints + " points!");
-  //else alert(players[bestPlayers[0]] + " won with " + highestPoints + " points!");
+  document.getElementById("playerTries").innerHTML = "Tries: " + highestPoints;
+  document.getElementById("playTime").innerHTML = "Playtime: " + document.getElementById("time").innerHTML;
+  document.getElementById("winnerPopup").style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
 function closeModal() {
-  let modal = document.getElementById("winnerPopup");
-  modal.style.display = "none";
+  document.getElementById("winnerPopup").style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
