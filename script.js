@@ -276,9 +276,36 @@ function determineWinner() {
     }
   }
   gameOver = true;
-  if (isDraft) alert("Draft with " + highestPoints + " points!");
-  else alert(players[bestPlayers[0]] + " won with " + highestPoints + " points!");
+
+  document.getElementById("highestPoints").innerHTML = "Score: " + highestPoints;
+  document.getElementById("winner").innerHTML = isDraft
+    ? "Its a Draft between: " +
+      bestPlayers.map((playerId) => {
+        return " " + players[playerId];
+      })
+    : "The winner is: " + players[bestPlayers[0]];
+  document.getElementById("playerTries").innerHTML = "Score: " + highestPoints;
+  // popup functions
+  let modal = document.getElementById("winnerPopup");
+  modal.style.display = "block";
+
+  //if (isDraft) alert("Draft with " + highestPoints + " points!");
+  //else alert(players[bestPlayers[0]] + " won with " + highestPoints + " points!");
 }
+
+// When the user clicks on <span> (x), close the modal
+function closeModal() {
+  let modal = document.getElementById("winnerPopup");
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  let modal = document.getElementById("winnerPopup");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
 
 function resetGame() {
   gameOver = true;
