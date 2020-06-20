@@ -232,7 +232,6 @@ h1 {
   display: none;
   position: fixed;
   z-index: 1;
-  padding-top: 150px;
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -240,6 +239,8 @@ h1 {
 }
 
 .popup-content {
+  position: relative;
+  top: 40%;
   background-color: #fefefe;
   margin: auto;
   padding: 20px;

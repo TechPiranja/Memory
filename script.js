@@ -10,6 +10,8 @@ var countUpDate = new Date().getTime();
 var now = new Date().getTime();
 var lockActions = false;
 var totalTries = 0;
+var flippedCards = {};
+var flippedCounter = 0;
 var emojis = [
   "&#9875",
   "&#9889",
@@ -56,16 +58,34 @@ var emojis = [
 ];
 var usedEmojis = [];
 
+const playerNameDiv = document.getElementById("playerNames");
+const configuration = document.getElementById("configuration");
+const gameScreen = document.getElementById("gameScreen");
+const board = document.getElementById("board");
+const playerAvatars = document.getElementById("playerAvatars");
+const totalTriesText = document.getElementById("totalTries");
+const pairRangeSlider = document.getElementById("pairRange");
+const outputPairSize = document.getElementById("outputPairSize");
+const playerRangeSlider = document.getElementById("playerRange");
+const outputPlayerSize = document.getElementById("outputPlayerSize");
+const time = document.getElementById("time");
+
+/* Popup Elements */
+const highestPointsInfo = document.getElementById("highestPoints");
+const winnerInfo = document.getElementById("winner");
+const playerTriesInfo = document.getElementById("playerTries");
+const playTimeInfo = document.getElementById("playTime");
+const winnerPopup = document.getElementById("winnerPopup");
+
 function setPairRange() {
-  pairRange = document.getElementById("pairRange").value;
-  document.getElementById("outputPairSize").innerHTML = pairRange;
+  pairRange = pairRangeSlider.value;
+  outputPairSize.innerHTML = pairRange;
 }
 
 function setPlayerRange() {
   let temp = playerRange;
-  playerRange = document.getElementById("playerRange").value;
-  document.getElementById("outputPlayerSize").innerHTML = playerRange;
-  let playerNameDiv = document.getElementById("playerNames");
+  playerRange = playerRangeSlider.value;
+  outputPlayerSize.innerHTML = playerRange;
   let loopCount = Math.abs(temp - playerRange);
   for (let i = 0; i < loopCount; i++) {
     if (temp < playerRange) {
@@ -102,16 +122,13 @@ function startGame() {
   for (let i = 0; i < playerRange; i++) players[i] = document.getElementById("player" + (i + 1)).value;
   for (let i = 1; i <= playerRange; i++) addPlayers(i);
 
-  let configuration = document.getElementById("configuration");
   configuration.style.display = "none";
-
-  let gameScreen = document.getElementById("gameScreen");
   gameScreen.style.display = "block";
 
   fillUsedEmojiList();
   playerScore = new Array(players.length).fill(0);
   playerTries = new Array(players.length).fill(0);
-  document.getElementById("time").innerHTML = 0 + "m " + 0 + "s ";
+  time.innerHTML = 0 + "m " + 0 + "s ";
   countUpDate = new Date().getTime();
   now = new Date().getTime();
   gameOver = false;
@@ -149,7 +166,6 @@ getNewRandomEmoji = function () {
 };
 
 function createBoard() {
-  let board = document.getElementById("board");
   for (let i = 0; i < pairRange * 2; i++) {
     let div = document.createElement("div");
     div.classList.add("card");
@@ -168,13 +184,11 @@ function createBoard() {
     div.setAttribute("id", "card" + i);
     div.addEventListener("click", flipCard);
     div.addEventListener("transitionend", checkCards);
-
     board.appendChild(div);
   }
 }
 
 function addPlayers(playerId) {
-  let playerAvatars = document.getElementById("playerAvatars");
   let div = document.createElement("div");
   let tagPlayerName = document.createElement("p");
   let textPlayerName = document.createTextNode(players[playerId - 1]);
@@ -197,15 +211,11 @@ function addPlayers(playerId) {
 }
 
 function resetSettings() {
-  document.getElementById("pairRange").value = 5;
+  pairRangeSlider.value = 5;
   setPairRange();
-
-  document.getElementById("playerRange").value = 1;
+  playerRangeSlider.value = 1;
   setPlayerRange();
 }
-
-var flippedCards = {};
-var flippedCounter = 0;
 
 function flipCard() {
   if (lockActions) return;
@@ -240,7 +250,6 @@ function checkCards() {
     playerTries[activePlayer] += 1;
     document.getElementById("playerTries" + activePlayer).innerHTML = "Tries: " + playerTries[activePlayer];
 
-    let totalTriesText = document.getElementById("totalTries");
     totalTries++;
     totalTriesText.innerHTML = "Total Tries: " + totalTries;
     flippedCounter = 0;
@@ -276,29 +285,28 @@ function determineWinner() {
     }
   }
 
-  document.getElementById("highestPoints").innerHTML = "Score: " + highestPoints;
-  document.getElementById("winner").innerHTML = isDraft
+  highestPointsInfo.innerHTML = "Score: " + highestPoints;
+  winnerInfo.innerHTML = isDraft
     ? "Its a Draft between: " +
       bestPlayers.map((playerId) => {
         return " " + players[playerId];
       })
     : "The winner is: " + players[bestPlayers[0]];
-  document.getElementById("playerTries").innerHTML = "Tries: " + highestPoints;
-  document.getElementById("playTime").innerHTML = "Playtime: " + document.getElementById("time").innerHTML;
-  document.getElementById("winnerPopup").style.display = "block";
+  playerTriesInfo.innerHTML = "Tries: " + highestPoints;
+  playTimeInfo.innerHTML = "Playtime: " + time.innerHTML;
+  winnerPopup.style.display = "block";
   gameOver = true;
 }
 
 // When the user clicks on <span> (x), close the popup
 function closePopup() {
-  document.getElementById("winnerPopup").style.display = "none";
+  winnerPopup.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the popup, close it
 window.onclick = function (event) {
-  let modal = document.getElementById("winnerPopup");
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (event.target == winnerPopup) {
+    winnerPopup.style.display = "none";
   }
 };
 
@@ -313,13 +321,9 @@ function resetGame() {
   flippedCounter = 0;
   totalTries = 0;
 
-  let configuration = document.getElementById("configuration");
   configuration.style.display = "block";
-  let gameScreen = document.getElementById("gameScreen");
   gameScreen.style.display = "none";
-  let board = document.getElementById("board");
   board.innerHTML = "";
-  let playerAvatars = document.getElementById("playerAvatars");
   playerAvatars.innerHTML = "";
 }
 
@@ -329,7 +333,7 @@ function timer() {
     let distance = now - countUpDate;
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    document.getElementById("time").innerHTML = minutes + "m " + seconds + "s ";
+    time.innerHTML = minutes + "m " + seconds + "s ";
 
     if (gameOver) {
       clearInterval(x);
