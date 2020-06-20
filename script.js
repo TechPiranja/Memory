@@ -162,10 +162,7 @@ function createBoard() {
     tagFront.innerHTML = usedEmojis[i];
     tagFront.classList.add("emoji");
 
-    let tagBack = document.createElement("p");
-
     frontFace.appendChild(tagFront);
-    backFace.appendChild(tagBack);
     div.appendChild(frontFace);
     div.appendChild(backFace);
     div.setAttribute("id", "card" + i);
