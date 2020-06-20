@@ -27,8 +27,6 @@ body {
 button,
 p {
   font-size: 15pt;
-  margin-bottom: 5px;
-  margin-top: 5px;
 }
 
 #time {
@@ -98,6 +96,12 @@ h1 {
   display: none;
 }
 
+.centerDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .gameContainer {
   display: flex;
   flex-direction: column;
@@ -163,7 +167,7 @@ h1 {
   justify-content: center;
   width: 100px;
   height: 100px;
-  margin: 3px;
+  margin: 5px;
   position: relative;
   -webkit-transform: scale(1);
   transform: scale(1);
@@ -270,6 +274,7 @@ h1 {
   .card {
     width: 50px;
     height: 50px;
+    margin: 1px;
   }
 
   p {
@@ -280,15 +285,12 @@ h1 {
 
   button {
     font-size: 12pt;
-    margin-bottom: 5px;
-    margin-top: 5px;
   }
 
   h1 {
     text-align: center;
-    margin: 15px;
     font-size: 18px;
-    margin: 10px;
+    margin: 0px;
   }
 
   .configuration {
@@ -319,13 +321,13 @@ h1 {
   }
 }
 
-@media only screen and (max-height: 700px) and (max-width: 600px) {
+@media only screen and (max-height: 650px) and (max-width: 600px) {
   .card {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
   }
 
   .emoji {
-    font-size: 20px;
+    font-size: 30px;
   }
 }

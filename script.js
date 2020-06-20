@@ -275,7 +275,6 @@ function determineWinner() {
       bestPlayers.push(i);
     }
   }
-  gameOver = true;
 
   document.getElementById("highestPoints").innerHTML = "Score: " + highestPoints;
   document.getElementById("winner").innerHTML = isDraft
@@ -287,6 +286,7 @@ function determineWinner() {
   document.getElementById("playerTries").innerHTML = "Tries: " + highestPoints;
   document.getElementById("playTime").innerHTML = "Playtime: " + document.getElementById("time").innerHTML;
   document.getElementById("winnerPopup").style.display = "block";
+  gameOver = true;
 }
 
 // When the user clicks on <span> (x), close the popup
