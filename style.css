@@ -1,334 +1,338 @@
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #bbdefb;
+    display: flex;
+    justify-content: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #bbdefb;
 }
 
 .configuration {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  justify-items: center;
-  background-color: white;
-  border-radius: 15px;
-  margin: 5px;
-  padding: 10px;
-  width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    background-color: white;
+    border-radius: 15px;
+    margin: 5px;
+    padding: 10px;
+    width: 300px;
 }
 
 button,
 p {
-  font-size: 15pt;
+    font-size: 15pt;
 }
 
 #time {
-  text-align: center;
+    text-align: center;
 }
 
 button {
-  background-color: #1976d2;
-  border-radius: 5px;
-  color: white;
-  padding: 5px;
-  outline: none;
-  border-style: none;
+    background-color: #1976d2;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+    outline: none;
+    border-style: none;
 }
 
 .columnContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin: 5px;
-  padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 5px;
+    padding: 10px;
 }
 
 .simpleContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .rowContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin: 5px;
-  padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 5px;
+    padding: 10px;
 }
 
 h1 {
-  text-align: center;
-  color: #0d47a1;
-  margin: 20px;
+    text-align: center;
+    color: #0d47a1;
+    margin: 20px;
 }
 
 .slider {
-  margin-left: 30px;
+    margin-left: 30px;
 }
 
 .playerNames {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .playerInfo {
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  border-radius: 15px;
-  margin: 20px;
-  padding: 10px;
-}
-
-.gameScreen {
-  display: flex;
-  flex-direction: row;
-  display: none;
-}
-
-.centerDiv {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.gameContainer {
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  border-radius: 15px;
-  margin: 20px;
-}
-
-.player {
-  border-radius: 10px;
-  text-align: center;
-  margin: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  width: auto;
-}
-
-.player1,
-#player1 {
-  background-color: #b3e5fc;
-}
-
-.player2,
-#player2 {
-  background-color: #b39ddb;
-}
-
-.player3,
-#player3 {
-  background-color: #ffecb3;
-}
-
-.player4,
-#player4 {
-  background-color: #b2dfdb;
-}
-
-.playerSetup {
-  margin-bottom: 10px;
-}
-
-#playerAvatars {
-  display: flex;
-  justify-content: space-evenly;
-  align-content: center;
-  text-align: center;
-  background-color: #eeeeee;
-}
-
-.memory-game {
-  margin: 5px;
-  max-width: 1200px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  -webkit-perspective: 1000px;
-  perspective: 1000px;
-}
-
-.card {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  width: 100px;
-  height: 100px;
-  margin: 5px;
-  position: relative;
-  -webkit-transform: scale(1);
-  transform: scale(1);
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-transition: transform 0.5s;
-  transition: transform 0.5s;
-  cursor: pointer;
-}
-
-.front {
-  -webkit-transform: rotateY(180deg);
-  transform: rotateY(180deg);
-}
-
-.front,
-.back {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-content: center;
-  position: absolute;
-  border-radius: 10px;
-  background: #1976d2;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-.card:active {
-  -webkit-transform: scale(0.97);
-  transform: scale(0.97);
-  transition: transform 0.2s;
-}
-
-.card.flip {
-  -webkit-transform: rotateY(180deg);
-  transform: rotateY(180deg);
-}
-
-.emoji {
-  font-size: 70px;
-}
-
-.active-player {
-  border-style: solid;
-  border-width: 5px;
-  border-color: #ffcc80;
-}
-
-.resetGame {
-  margin-left: 20px;
-}
-
-.info {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-/* Popup */
-.popup {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.popup-content {
-  position: relative;
-  top: 40%;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  width: 80%;
-  max-width: 400px;
-  border-radius: 15px;
-  text-align: center;
-}
-
-.close {
-  position: relative;
-  top: -15px;
-  right: -10px;
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-@media only screen and (max-width: 900px) {
-  .emoji {
-    font-size: 40px;
-  }
-
-  .card {
-    width: 50px;
-    height: 50px;
-    margin: 1px;
-  }
-
-  p {
-    font-size: 11pt;
-    margin: 0;
-    padding: 0;
-  }
-
-  button {
-    font-size: 12pt;
-  }
-
-  h1 {
-    text-align: center;
-    font-size: 18px;
-    margin: 0px;
-  }
-
-  .configuration {
-    display: flex;
-    padding: 10px;
-  }
-
-  .gameContainer {
     display: flex;
     flex-direction: column;
     background-color: white;
     border-radius: 15px;
-    margin: 10px;
-  }
+    margin: 20px;
+    padding: 10px;
+}
 
-  .resetGame {
-    margin-left: 15px;
-  }
+.gameScreen {
+    display: flex;
+    flex-direction: row;
+    display: none;
+}
 
-  .player {
-    margin: 4px;
-    padding-left: 5px;
-    padding-right: 5px;
-  }
+.centerDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-  .active-player {
-    border-width: 3px;
-  }
+.gameContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 15px;
+    margin: 20px;
+}
+
+.player {
+    border-radius: 10px;
+    text-align: center;
+    margin: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: auto;
+}
+
+.player1,
+#player1 {
+    background-color: #b3e5fc;
+}
+
+.player2,
+#player2 {
+    background-color: #b39ddb;
+}
+
+.player3,
+#player3 {
+    background-color: #ffecb3;
+}
+
+.player4,
+#player4 {
+    background-color: #b2dfdb;
+}
+
+.playerSetup {
+    margin-bottom: 10px;
+}
+
+#playerAvatars {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    text-align: center;
+    background-color: #eeeeee;
+}
+
+.memory-game {
+    margin: 5px;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+}
+
+.card {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    position: relative;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: transform 0.5s;
+    transition: transform 0.5s;
+    cursor: pointer;
+}
+
+.front {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.front,
+.back {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    border-radius: 10px;
+    background: #1976d2;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.back {
+    background-size: 50%;
+}
+
+.card:active {
+    -webkit-transform: scale(0.97);
+    transform: scale(0.97);
+    transition: transform 0.2s;
+}
+
+.card.flip {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.emoji {
+    font-size: 70px;
+}
+
+.active-player {
+    border-style: solid;
+    border-width: 5px;
+    border-color: #ffcc80;
+}
+
+.resetGame {
+    margin-left: 20px;
+}
+
+.info {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* Popup */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup-content {
+    position: relative;
+    top: 40%;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.close {
+    position: relative;
+    top: -15px;
+    right: -10px;
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
+    .emoji {
+        font-size: 40px;
+    }
+
+    .card {
+        width: 50px;
+        height: 50px;
+        margin: 1px;
+    }
+
+    p {
+        font-size: 11pt;
+        margin: 0;
+        padding: 0;
+    }
+
+    button {
+        font-size: 12pt;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 18px;
+        margin: 0px;
+    }
+
+    .configuration {
+        display: flex;
+        padding: 10px;
+    }
+
+    .gameContainer {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        border-radius: 15px;
+        margin: 10px;
+    }
+
+    .resetGame {
+        margin-left: 15px;
+    }
+
+    .player {
+        margin: 4px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .active-player {
+        border-width: 3px;
+    }
 }
 
 @media only screen and (max-height: 650px) and (max-width: 600px) {
-  .card {
-    width: 40px;
-    height: 40px;
-  }
+    .card {
+        width: 40px;
+        height: 40px;
+    }
 
-  .emoji {
-    font-size: 30px;
-  }
+    .emoji {
+        font-size: 30px;
+    }
 }
