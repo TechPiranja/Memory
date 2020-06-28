@@ -150,6 +150,7 @@ function startGame() {
 	createBoard();
 }
 
+// adds single playerAvatar element to board
 function addPlayers(playerId) {
 	let div = document.createElement("div");
 	let tagPlayerName = document.createElement("p");
@@ -172,6 +173,7 @@ function addPlayers(playerId) {
 	playerAvatars.appendChild(div);
 }
 
+// gets random emojis from our preset and shuffles them
 function fillEmojiList() {
 	for (let i = 0; i < pairRange * 2; i += 2) {
 		let emoji = getNewRandomEmoji();
@@ -190,6 +192,7 @@ function shuffleArr(array) {
 	}
 }
 
+// gets random emoji (without duplication)
 getNewRandomEmoji = function () {
 	let emoji;
 	do {
@@ -199,6 +202,7 @@ getNewRandomEmoji = function () {
 	return emoji;
 };
 
+// fills board dynamically with cards
 function createBoard() {
 	for (let i = 0; i < pairRange * 2; i++) {
 		let div = document.createElement("div");
@@ -222,6 +226,7 @@ function createBoard() {
 	}
 }
 
+// resets configuration to default
 function resetSettings() {
 	pairRangeSlider.value = 5;
 	setPairRange();
@@ -238,24 +243,30 @@ function flipCard() {
 	}
 }
 
+// checks cards and gameOver
 function checkCards() {
 	if (flippedCounter == 2) {
 		let firstFlipped = document.getElementById(flippedCards[0]);
 		let secondFlipped = document.getElementById(flippedCards[1]);
+		// checks if both cards have the same emoji displayed
 		if (firstFlipped.innerHTML == secondFlipped.innerHTML) {
+			// removes EventListener so they can't be clicked anymore
 			firstFlipped.removeEventListener("click", flipCard);
 			secondFlipped.removeEventListener("click", flipCard);
+			// increasing foundPairs and playerScore for activePlayer
 			foundPairs++;
 			playerScores[activePlayer] += 1;
 			document.getElementById("playerScore" + activePlayer).innerHTML = "Score: " + playerScores[activePlayer];
 			if (foundPairs == pairRange) determineWinner();
 		} else {
+			// locks board till the flip animation is finished
 			lockActions = true;
 			setTimeout(() => {
 				firstFlipped.classList.toggle("flip");
 				secondFlipped.classList.toggle("flip");
 
 				lockActions = false;
+				// sets new activePlayer
 				setActivePlayer(true);
 			}, 800);
 		}
@@ -264,6 +275,7 @@ function checkCards() {
 
 		totalTries++;
 		totalTriesText.innerHTML = "Total Tries: " + totalTries;
+		// resets flippedCounter and flippedCards for new try.
 		flippedCounter = 0;
 		flippedCards = {};
 	}
@@ -272,10 +284,13 @@ function checkCards() {
 function setActivePlayer(withChange) {
 	if (gameOver) return;
 	if (withChange) {
+		// changing to new active player and remove active-player style from old activePlayer
+		// activePlayer Array starts at 0, the elements at 1, thats why activePlayer + 1 is used
 		let lastActivePlayerAvatar = document.getElementById("playerAvatar" + (activePlayer + 1));
 		lastActivePlayerAvatar.classList.remove("active-player");
 		activePlayer = (activePlayer + 1) % players.length;
 	}
+	// adding active-player style to new activePlayer
 	var activeAvatar = document.getElementById("playerAvatar" + (activePlayer + 1));
 	activeAvatar.classList.add("active-player");
 }
@@ -284,6 +299,8 @@ function determineWinner() {
 	let highestPoints = 0;
 	let bestPlayers = [];
 	let isDraft = false;
+
+	// determines highestPoints and if its a draft between multiple players
 	for (let i = 0; i < players.length; i++) {
 		if (playerScores[i] > highestPoints) {
 			isDraft = false;
@@ -297,6 +314,7 @@ function determineWinner() {
 		}
 	}
 
+	// filling info for winnerPopup element
 	highestPointsInfo.innerHTML = "Score: " + highestPoints;
 	winnerInfo.innerHTML = isDraft
 		? "Its a Draft between: " +
@@ -310,7 +328,7 @@ function determineWinner() {
 	gameOver = true;
 }
 
-// When the user clicks on <span> (x), close the popup
+// When the user clicks on (x), close the popup
 function closePopup() {
 	winnerPopup.style.display = "none";
 }
@@ -322,6 +340,8 @@ window.onclick = function (event) {
 	}
 };
 
+/* resets all game relevant vars,
+clears board/avatars and switches back to configuration screen */
 function resetGame() {
 	gameOver = true;
 	foundPairs = 0;
@@ -339,6 +359,7 @@ function resetGame() {
 	playerAvatars.innerHTML = "";
 }
 
+// updates timer element every second if the game is not over
 function timer() {
 	let x = setInterval(function () {
 		now = new Date().getTime();
