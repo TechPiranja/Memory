@@ -5,7 +5,7 @@ var players = [];
 var activePlayer = 0;
 var playerScores = {};
 var playerTries = {};
-var gameOver = false;
+var gameOver = true;
 var countUpDate = new Date().getTime();
 var now = new Date().getTime();
 var lockActions = false;
@@ -76,6 +76,8 @@ const winnerInfo = document.getElementById("winner");
 const playerTriesInfo = document.getElementById("playerTries");
 const playTimeInfo = document.getElementById("playTime");
 const winnerPopup = document.getElementById("winnerPopup");
+
+window.onresize = resizeBoard;
 
 /* gets value from slider element
 and sets it to pairRange var and on the p element */
@@ -223,6 +225,37 @@ function createBoard() {
 		div.addEventListener("transitionend", checkCards);
 		board.appendChild(div);
 	}
+
+	resizeBoard();
+}
+
+function resizeBoard() {
+	if (gameOver) return;
+	let overflow = isOverflown(document.body);
+	let cards = document.getElementsByClassName("card");
+
+	while (overflow) {
+		if (gameScreen.offsetHeight + cards[0].clientHeight * 3 > document.body.clientHeight) {
+			for (let i = 0; i < cards.length; i++) {
+				cards[i].style.width = cards[i].clientWidth - 5;
+				cards[i].style.height = cards[i].clientHeight - 5;
+				cards[i].childNodes[0].childNodes[0].style.fontSize = cards[i].clientWidth * 0.8 + "px";
+			}
+			overflow = isOverflown(document.body);
+		}
+	}
+
+	while (!overflow && gameScreen.offsetHeight + cards[0].clientHeight * 3 < document.body.clientHeight) {
+		for (let i = 0; i < cards.length; i++) {
+			cards[i].style.width = cards[i].clientWidth + 5;
+			cards[i].style.height = cards[i].clientHeight + 5;
+			cards[i].childNodes[0].childNodes[0].style.fontSize = cards[i].clientWidth * 0.8 + "px";
+		}
+	}
+}
+
+function isOverflown(element) {
+	return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
 }
 
 // resets configuration to default

@@ -152,11 +152,11 @@ h1 {
 }
 
 .memory-game {
-	margin: 5px;
+	margin: 10px;
 	max-width: 1200px;
+	justify-content: center;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
 	-webkit-perspective: 1000px;
 	perspective: 1000px;
 }
@@ -273,17 +273,7 @@ h1 {
 	cursor: pointer;
 }
 
-@media only screen and (max-width: 900px), (max-height: 650px) {
-	.emoji {
-		font-size: 40px;
-	}
-
-	.card {
-		width: 50px;
-		height: 50px;
-		margin: 1px;
-	}
-
+@media only screen and (max-width: 700px), (max-height: 650px) {
 	p {
 		font-size: 11pt;
 		margin: 0;
@@ -306,10 +296,6 @@ h1 {
 	}
 
 	.gameContainer {
-		display: flex;
-		flex-direction: column;
-		background-color: white;
-		border-radius: 15px;
 		margin: 10px;
 	}
 
@@ -326,15 +312,8 @@ h1 {
 	.active-player {
 		border-width: 3px;
 	}
-}
 
-@media only screen and (max-height: 650px) and (max-width: 600px) {
 	.card {
-		width: 40px;
-		height: 40px;
-	}
-
-	.emoji {
-		font-size: 30px;
+		margin: 1px;
 	}
 }
