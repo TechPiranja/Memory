@@ -102,7 +102,6 @@ function setPlayerRange() {
 			input.setAttribute("type", "text");
 			input.setAttribute("id", "player" + temp);
 			input.value = "Player " + temp;
-			input.addEventListener("input", setPlayerName);
 			label.innerHTML = "Name: ";
 			tag.appendChild(text);
 			div.appendChild(tag);
