@@ -238,7 +238,7 @@ function resizeBoard() {
 		for (let i = 0; i < cards.length; i++) {
 			cards[i].style.width = cards[i].clientWidth - 5;
 			cards[i].style.height = cards[i].clientHeight - 5;
-			cards[i].childNodes[0].childNodes[0].style.fontSize = cards[i].clientWidth * 0.8 + "px";
+			cards[i].childNodes[0].childNodes[0].style.fontSize = cards[i].clientWidth * 0.5 + "px";
 		}
 		overflow = isOverflown(document.body);
 	}
@@ -247,7 +247,7 @@ function resizeBoard() {
 		for (let i = 0; i < cards.length; i++) {
 			cards[i].style.width = cards[i].clientWidth + 5;
 			cards[i].style.height = cards[i].clientHeight + 5;
-			cards[i].childNodes[0].childNodes[0].style.fontSize = cards[i].clientWidth * 0.8 + "px";
+			cards[i].childNodes[0].childNodes[0].style.fontSize = cards[i].clientWidth * 0.5 + "px";
 		}
 		overflow = isOverflown(document.body);
 	}
