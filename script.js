@@ -19,11 +19,11 @@ var emojis = [
 	"&#9918",
 	"&#9924",
 	"&#9925",
-	"&#9961",
+	"&#9749",
 	"&#9962",
-	"&#9968",
-	"&#9969",
-	"&#9976",
+	"&#9978",
+	"&#128520",
+	"&#128519",
 	"&#11088",
 	"&#127752",
 	"&#127758",
@@ -340,7 +340,6 @@ function determineWinner() {
 		if (playerScores[i] > highestPoints) {
 			isDraft = false;
 			highestPoints = playerScores[i];
-			bestPlayers = [];
 			bestPlayers.push(i);
 		} else if (playerScores[i] == highestPoints) {
 			isDraft = true;
@@ -357,7 +356,7 @@ function determineWinner() {
 				return " " + players[playerId];
 		  })
 		: "The winner is: " + players[bestPlayers[0]];
-	playerTriesInfo.innerHTML = "Tries: " + highestPoints;
+	playerTriesInfo.innerHTML = "Tries: " + playerTries[bestPlayers[0]];
 	playTimeInfo.innerHTML = "Playtime: " + time.innerHTML;
 	winnerPopup.style.display = "block";
 	gameOver = true;
