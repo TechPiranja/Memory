@@ -103,7 +103,6 @@ function setPlayerRange() {
 			let label = document.createElement("lavel");
 			input.setAttribute("type", "text");
 			input.setAttribute("id", "player" + temp);
-			input.value = "Player " + temp;
 			label.innerHTML = "Name: ";
 			tag.appendChild(text);
 			div.appendChild(tag);
@@ -122,7 +121,12 @@ function setPlayerRange() {
 
 function startGame() {
 	// gets all playerNames to display them on the gameScreen
-	for (let i = 0; i < playerRange; i++) players[i] = document.getElementById("player" + (i + 1)).value;
+	for (let i = 0; i < playerRange; i++) {
+		let p = document.getElementById("player" + (i + 1)).value;
+		// adds default names if there was no name given
+		players[i] = p == "" ? "Player " + (i + 1) : p;
+	}
+
 	// adds player info (player avatar) to game board
 	for (let i = 1; i <= playerRange; i++) addPlayers(i);
 
