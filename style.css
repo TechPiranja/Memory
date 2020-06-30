@@ -204,6 +204,8 @@ h1 {
 
 .emoji {
 	font-size: 80px;
+	display: flex;
+	align-items: center;
 }
 
 .active-player {
