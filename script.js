@@ -392,6 +392,7 @@ function resetGame() {
 	gameScreen.style.display = "none";
 	board.innerHTML = "";
 	playerAvatars.innerHTML = "";
+	totalTriesText.innerHTML = "Total Tries: 0";
 }
 
 // updates timer element every second if the game is not over
