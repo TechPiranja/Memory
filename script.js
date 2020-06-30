@@ -233,16 +233,14 @@ function resizeBoard() {
 	if (gameOver) return;
 	let overflow = isOverflown(document.body);
 	let cards = document.getElementsByClassName("card");
-
-	while (overflow) {
-		if (gameScreen.offsetHeight + cards[0].clientHeight * 3 > document.body.clientHeight) {
-			for (let i = 0; i < cards.length; i++) {
-				cards[i].style.width = cards[i].clientWidth - 5;
-				cards[i].style.height = cards[i].clientHeight - 5;
-				cards[i].childNodes[0].childNodes[0].style.fontSize = cards[i].clientWidth * 0.8 + "px";
-			}
-			overflow = isOverflown(document.body);
+	console.log(overflow);
+	while (overflow && gameScreen.offsetHeight + cards[0].clientHeight * 3 > document.body.clientHeight) {
+		for (let i = 0; i < cards.length; i++) {
+			cards[i].style.width = cards[i].clientWidth - 5;
+			cards[i].style.height = cards[i].clientHeight - 5;
+			cards[i].childNodes[0].childNodes[0].style.fontSize = cards[i].clientWidth * 0.8 + "px";
 		}
+		overflow = isOverflown(document.body);
 	}
 
 	while (!overflow && gameScreen.offsetHeight + cards[0].clientHeight * 3 < document.body.clientHeight) {
@@ -251,6 +249,7 @@ function resizeBoard() {
 			cards[i].style.height = cards[i].clientHeight + 5;
 			cards[i].childNodes[0].childNodes[0].style.fontSize = cards[i].clientWidth * 0.8 + "px";
 		}
+		overflow = isOverflown(document.body);
 	}
 }
 
