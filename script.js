@@ -100,13 +100,11 @@ function setPlayerRange() {
 			let tag = document.createElement("p");
 			let text = document.createTextNode("Player " + temp);
 			let input = document.createElement("input");
-			let label = document.createElement("lavel");
+			input.placeholder = "Enter Name...";
 			input.setAttribute("type", "text");
 			input.setAttribute("id", "player" + temp);
-			label.innerHTML = "Name: ";
 			tag.appendChild(text);
 			div.appendChild(tag);
-			div.appendChild(label);
 			div.appendChild(input);
 			div.classList.add("playerSetup");
 			playerNameDiv.appendChild(div);
@@ -163,9 +161,11 @@ function addPlayers(playerId) {
 	let tagScore = document.createElement("p");
 	let textScore = document.createTextNode("Score: 0");
 	tagScore.setAttribute("id", "playerScore" + (playerId - 1));
+	tagScore.style.color = "#444";
 	let tagTries = document.createElement("p");
 	let textTries = document.createTextNode("Tries: 0");
 	tagTries.setAttribute("id", "playerTries" + (playerId - 1));
+	tagTries.style.color = "#444";
 	tagPlayerName.appendChild(textPlayerName);
 	tagScore.appendChild(textScore);
 	tagTries.appendChild(textTries);
