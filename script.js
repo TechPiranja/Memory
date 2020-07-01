@@ -281,6 +281,11 @@ function flipCard() {
 // checks cards and gameOver
 function checkCards() {
 	if (flippedCounter == 2) {
+		playerTries[activePlayer] += 1;
+		document.getElementById("playerTries" + activePlayer).innerHTML = "Tries: " + playerTries[activePlayer];
+		totalTries++;
+		totalTriesText.innerHTML = "Total Tries: " + totalTries;
+
 		let firstFlipped = document.getElementById(flippedCards[0]);
 		let secondFlipped = document.getElementById(flippedCards[1]);
 		// checks if both cards have the same emoji displayed
@@ -305,11 +310,7 @@ function checkCards() {
 				setActivePlayer(true);
 			}, 800);
 		}
-		playerTries[activePlayer] += 1;
-		document.getElementById("playerTries" + activePlayer).innerHTML = "Tries: " + playerTries[activePlayer];
 
-		totalTries++;
-		totalTriesText.innerHTML = "Total Tries: " + totalTries;
 		// resets flippedCounter and flippedCards for new try.
 		flippedCounter = 0;
 		flippedCards = {};
@@ -340,6 +341,7 @@ function determineWinner() {
 		if (playerScores[i] > highestPoints) {
 			isDraft = false;
 			highestPoints = playerScores[i];
+			bestPlayers = [];
 			bestPlayers.push(i);
 		} else if (playerScores[i] == highestPoints) {
 			isDraft = true;
