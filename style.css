@@ -1,7 +1,6 @@
 * {
 	padding: 0;
 	margin: 0;
-	box-sizing: border-box;
 }
 
 body {
@@ -27,6 +26,13 @@ body {
 button,
 p {
 	font-size: 15pt;
+}
+
+hr {
+	border: none;
+	height: 1px;
+	color: #aaa; /* old IE */
+	background-color: #aaa; /* Modern Browsers */
 }
 
 #time {
@@ -299,7 +305,6 @@ input {
 
 	.configuration {
 		display: flex;
-		padding: 10px;
 	}
 
 	.gameContainer {
