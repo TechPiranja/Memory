@@ -9,6 +9,7 @@ body {
 	justify-content: center;
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	background-color: #bbdefb;
+	height: 100%;
 }
 
 .configuration {
@@ -98,7 +99,6 @@ h1 {
 .centerDiv {
 	flex-direction: column;
 	display: flex;
-	height: 100vh;
 	justify-content: center;
 }
 
