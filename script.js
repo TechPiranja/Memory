@@ -233,6 +233,7 @@ function createBoard() {
 	resizeBoard();
 }
 
+// resizing Board if Site is overflowing (has Scrollbar) or if Site has enough space to increase all memory cards
 function resizeBoard() {
 	if (gameOver) return;
 	let overflow = isOverflown(document.body);
@@ -257,6 +258,7 @@ function resizeBoard() {
 	}
 }
 
+// checks if element overflowed and made scrollbar on site
 function isOverflown(element) {
 	return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
 }
